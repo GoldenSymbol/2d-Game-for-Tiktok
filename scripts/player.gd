@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 
 @export var SPEED = 400.0
-@export var JUMP_VELOCITY = -600.0
+@export var JUMP_VELOCITY = -900.0
 @export var attacking = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -36,7 +36,7 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, 12)
 	update_animation()
 	move_and_slide()
 

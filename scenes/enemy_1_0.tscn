@@ -30,6 +30,39 @@ radius = 10.6733
 [sub_resource type="CircleShape2D" id="CircleShape2D_t24kn"]
 radius = 52.0
 
+[sub_resource type="Animation" id="Animation_7r5x0"]
+resource_name = "dead"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("20_tskrg"), ExtResource("21_1bwc7"), ExtResource("22_jnsq6"), ExtResource("23_2ihre")]
+}
+
+[sub_resource type="Animation" id="Animation_me7my"]
+resource_name = "hit"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("16_mnkwh"), ExtResource("17_ebldy"), ExtResource("18_7313o"), ExtResource("19_naprg")]
+}
+
 [sub_resource type="Animation" id="Animation_ssgbg"]
 resource_name = "idle"
 length = 0.7
@@ -62,39 +95,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("10_0u3nx"), ExtResource("11_ydaot"), ExtResource("12_ru468"), ExtResource("13_an0ck"), ExtResource("14_prgbl"), ExtResource("15_j4cwg")]
-}
-
-[sub_resource type="Animation" id="Animation_me7my"]
-resource_name = "hit"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("16_mnkwh"), ExtResource("17_ebldy"), ExtResource("18_7313o"), ExtResource("19_naprg")]
-}
-
-[sub_resource type="Animation" id="Animation_7r5x0"]
-resource_name = "dead"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("20_tskrg"), ExtResource("21_1bwc7"), ExtResource("22_jnsq6"), ExtResource("23_2ihre")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h3od4"]
