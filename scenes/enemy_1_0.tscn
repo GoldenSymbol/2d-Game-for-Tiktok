@@ -1,0 +1,133 @@
+[gd_scene load_steps=31 format=3 uid="uid://crokna8j8lagw"]
+
+[ext_resource type="Script" path="res://scripts/enemy_one.gd" id="1_5241r"]
+[ext_resource type="Texture2D" uid="uid://4th451k6vdm2" path="res://assets/mobs/patrick/01-Idle/Idle 01.png" id="2_4rh68"]
+[ext_resource type="Texture2D" uid="uid://bymjoa5aa8vu0" path="res://assets/mobs/patrick/01-Idle/Idle 02.png" id="3_328tt"]
+[ext_resource type="Texture2D" uid="uid://41j6sos0t5dt" path="res://assets/mobs/patrick/01-Idle/Idle 03.png" id="4_w2hbd"]
+[ext_resource type="Texture2D" uid="uid://ov5i1s1t8qv0" path="res://assets/mobs/patrick/01-Idle/Idle 04.png" id="5_ccqni"]
+[ext_resource type="Texture2D" uid="uid://b5tsect7138ay" path="res://assets/mobs/patrick/01-Idle/Idle 05.png" id="6_nt1o2"]
+[ext_resource type="Texture2D" uid="uid://dg7aju3csht21" path="res://assets/mobs/patrick/01-Idle/Idle 06.png" id="7_3rygm"]
+[ext_resource type="Texture2D" uid="uid://bw2dd8nvxtw8n" path="res://assets/mobs/patrick/01-Idle/Idle 07.png" id="8_sjuco"]
+[ext_resource type="Texture2D" uid="uid://bm55evh50e1y8" path="res://assets/mobs/patrick/01-Idle/Idle 08.png" id="9_arnxr"]
+[ext_resource type="Texture2D" uid="uid://s1dm7u2p28ia" path="res://assets/mobs/patrick/02-Run/Run 01.png" id="10_0u3nx"]
+[ext_resource type="Texture2D" uid="uid://iyq187mgujfi" path="res://assets/mobs/patrick/02-Run/Run 02.png" id="11_ydaot"]
+[ext_resource type="Texture2D" uid="uid://d4kcnk8xpi6y1" path="res://assets/mobs/patrick/02-Run/Run 03.png" id="12_ru468"]
+[ext_resource type="Texture2D" uid="uid://dr614q8m5ktcc" path="res://assets/mobs/patrick/02-Run/Run 04.png" id="13_an0ck"]
+[ext_resource type="Texture2D" uid="uid://dox7x0jq3equp" path="res://assets/mobs/patrick/02-Run/Run 05.png" id="14_prgbl"]
+[ext_resource type="Texture2D" uid="uid://b1dib5keua4tu" path="res://assets/mobs/patrick/02-Run/Run 06.png" id="15_j4cwg"]
+[ext_resource type="Texture2D" uid="uid://booibkh382jug" path="res://assets/mobs/patrick/08-Hit/Hit 01.png" id="16_mnkwh"]
+[ext_resource type="Texture2D" uid="uid://c1kfcusagds2u" path="res://assets/mobs/patrick/08-Hit/Hit 02.png" id="17_ebldy"]
+[ext_resource type="Texture2D" uid="uid://b46n2mg12rtj7" path="res://assets/mobs/patrick/08-Hit/Hit 03.png" id="18_7313o"]
+[ext_resource type="Texture2D" uid="uid://di3sq488ykik7" path="res://assets/mobs/patrick/08-Hit/Hit 04.png" id="19_naprg"]
+[ext_resource type="Texture2D" uid="uid://dytvkc8tegi1r" path="res://assets/mobs/patrick/09-Dead Hit/Dead Hit 01.png" id="20_tskrg"]
+[ext_resource type="Texture2D" uid="uid://cevvbahuo46cb" path="res://assets/mobs/patrick/09-Dead Hit/Dead Hit 02.png" id="21_1bwc7"]
+[ext_resource type="Texture2D" uid="uid://dfq2mxo3q18fv" path="res://assets/mobs/patrick/09-Dead Hit/Dead Hit 03.png" id="22_jnsq6"]
+[ext_resource type="Texture2D" uid="uid://damfq0jsnueqb" path="res://assets/mobs/patrick/09-Dead Hit/Dead Hit 04.png" id="23_2ihre"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_457b7"]
+radius = 10.6733
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t24kn"]
+radius = 52.0
+
+[sub_resource type="Animation" id="Animation_ssgbg"]
+resource_name = "idle"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_4rh68"), ExtResource("3_328tt"), ExtResource("4_w2hbd"), ExtResource("5_ccqni"), ExtResource("6_nt1o2"), ExtResource("7_3rygm"), ExtResource("8_sjuco"), ExtResource("9_arnxr")]
+}
+
+[sub_resource type="Animation" id="Animation_vys7x"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_0u3nx"), ExtResource("11_ydaot"), ExtResource("12_ru468"), ExtResource("13_an0ck"), ExtResource("14_prgbl"), ExtResource("15_j4cwg")]
+}
+
+[sub_resource type="Animation" id="Animation_me7my"]
+resource_name = "hit"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("16_mnkwh"), ExtResource("17_ebldy"), ExtResource("18_7313o"), ExtResource("19_naprg")]
+}
+
+[sub_resource type="Animation" id="Animation_7r5x0"]
+resource_name = "dead"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("20_tskrg"), ExtResource("21_1bwc7"), ExtResource("22_jnsq6"), ExtResource("23_2ihre")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3od4"]
+_data = {
+"dead": SubResource("Animation_7r5x0"),
+"hit": SubResource("Animation_me7my"),
+"idle": SubResource("Animation_ssgbg"),
+"run": SubResource("Animation_vys7x")
+}
+
+[node name="enemy1_0" type="CharacterBody2D"]
+script = ExtResource("1_5241r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3.58333, 3.58333)
+texture = ExtResource("15_j4cwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.96046e-08)
+scale = Vector2(5.16667, 5.16667)
+shape = SubResource("CircleShape2D_457b7")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_t24kn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h3od4")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-52, 0)
+target_position = Vector2(0, 66)
