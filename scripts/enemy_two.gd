@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 var SPEED = -100.0
 var facing_right = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -28,11 +29,11 @@ func flip():
 	scale.x = abs(scale.x) * -1
 	if facing_right:
 		SPEED = abs(SPEED)
-	else:
+	else :
 		SPEED = abs(SPEED) * -1
 
 
-func _on_hitbox_area_entered(area):
+func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player && !dead && can_attack:
 		area.get_parent().take_damage(1)
 

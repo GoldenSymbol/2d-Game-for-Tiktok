@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_2lu60"]
 [ext_resource type="Texture2D" uid="uid://ylp7nrmgx15" path="res://assets/main_char/run/5.png" id="1_tn8ww"]
+[ext_resource type="Texture2D" uid="uid://cyngrox0fdv1e" path="res://assets/main_char/hit/5.png" id="2_fwna1"]
 [ext_resource type="Texture2D" uid="uid://d4eqae7rabu4g" path="res://assets/main_char/idle/1.png" id="2_y4vrj"]
 [ext_resource type="Texture2D" uid="uid://by031mo5qmaex" path="res://assets/main_char/idle/2.png" id="3_br7e1"]
 [ext_resource type="Texture2D" uid="uid://b0xfa57fhwy2x" path="res://assets/main_char/idle/3.png" id="4_ay5da"]
@@ -14,17 +15,18 @@
 [ext_resource type="Texture2D" uid="uid://do2oc1iwe8l31" path="res://assets/main_char/run/2.png" id="11_4fsu7"]
 [ext_resource type="Texture2D" uid="uid://cjuite1slwopg" path="res://assets/main_char/run/3.png" id="12_rsxid"]
 [ext_resource type="Texture2D" uid="uid://dpll1ulau6lu" path="res://assets/main_char/run/4.png" id="13_ic34v"]
-[ext_resource type="Texture2D" uid="uid://b1bqnrsxi3aw0" path="res://assets/main_char/attack/1.png" id="14_v5p3d"]
-[ext_resource type="Texture2D" uid="uid://bct0pvuija634" path="res://assets/main_char/attack/2.png" id="15_xta3u"]
 [ext_resource type="Texture2D" uid="uid://bdqqnebw2yxb0" path="res://assets/main_char/attack/3.png" id="16_38tkb"]
-[ext_resource type="Texture2D" uid="uid://3w73vx61gjm" path="res://assets/main_char/attack/4.png" id="17_ba7at"]
-[ext_resource type="Texture2D" uid="uid://d04o232nq1ps4" path="res://assets/main_char/attack/5.png" id="18_0y1qo"]
-[ext_resource type="Texture2D" uid="uid://bn4bd5pc8gwr3" path="res://assets/main_char/attack/6.png" id="19_5nr4e"]
-[ext_resource type="Texture2D" uid="uid://8rocp5h8mvis" path="res://assets/main_char/attack/7.png" id="20_yr33e"]
-[ext_resource type="Texture2D" uid="uid://1hneevw83jdn" path="res://assets/main_char/attack/8.png" id="21_bnxb4"]
 [ext_resource type="Texture2D" uid="uid://bbv5pdja8a5ht" path="res://assets/main_char/attack/9.png" id="22_jje66"]
+[ext_resource type="Texture2D" uid="uid://4spcvxstc5es" path="res://assets/main_char/hit/2.png" id="22_u4q7c"]
 [ext_resource type="Texture2D" uid="uid://dgtocy1sssqrm" path="res://assets/main_char/attack/10.png" id="23_isevs"]
+[ext_resource type="Texture2D" uid="uid://ca65sv20syyew" path="res://assets/main_char/hit/3.png" id="23_tfg0x"]
+[ext_resource type="Texture2D" uid="uid://6ghmn018o1d3" path="res://assets/main_char/hit/4.png" id="24_4gpk1"]
 [ext_resource type="Texture2D" uid="uid://b1o2j2jlb0byt" path="res://assets/main_char/attack/11.png" id="24_eh1ol"]
+[ext_resource type="Texture2D" uid="uid://21lod21p41at" path="res://assets/main_char/run/6.png" id="26_3u6sp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6yiuw"]
+radius = 35.0
+height = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahbgd"]
 radius = 14.1176
@@ -36,6 +38,7 @@ height = 96.0
 
 [sub_resource type="Animation" id="Animation_ng0ec"]
 resource_name = "attack"
+length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -44,10 +47,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("14_v5p3d"), ExtResource("15_xta3u"), ExtResource("16_38tkb"), ExtResource("17_ba7at"), ExtResource("18_0y1qo"), ExtResource("19_5nr4e"), ExtResource("20_yr33e"), ExtResource("21_bnxb4"), ExtResource("22_jje66"), ExtResource("23_isevs"), ExtResource("24_eh1ol")]
+"values": [ExtResource("16_38tkb"), ExtResource("22_jje66"), ExtResource("23_isevs"), ExtResource("24_eh1ol")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,7 +59,7 @@ tracks/1/path = NodePath(".:attacking")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -113,7 +116,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_qciia"]
 resource_name = "run"
-length = 0.4
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -122,28 +125,64 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("10_uk578"), ExtResource("11_4fsu7"), ExtResource("12_rsxid"), ExtResource("13_ic34v"), ExtResource("1_tn8ww")]
+"values": [ExtResource("10_uk578"), ExtResource("11_4fsu7"), ExtResource("12_rsxid"), ExtResource("13_ic34v"), ExtResource("26_3u6sp"), ExtResource("1_tn8ww")]
+}
+
+[sub_resource type="Animation" id="Animation_eyrwb"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("22_u4q7c"), ExtResource("23_tfg0x"), ExtResource("24_4gpk1"), ExtResource("2_fwna1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hit")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l5h3u"]
 _data = {
 "attack": SubResource("Animation_ng0ec"),
 "fall": SubResource("Animation_52aq0"),
+"hit": SubResource("Animation_eyrwb"),
 "idle": SubResource("Animation_f4f3s"),
 "jump": SubResource("Animation_qw1t7"),
 "run": SubResource("Animation_qciia")
 }
 
 [node name="Node2D" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_2lu60")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 27)
+shape = SubResource("CapsuleShape2D_6yiuw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3.33839, 3.33839)
-texture = ExtResource("22_jje66")
+texture = ExtResource("2_fwna1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 27)

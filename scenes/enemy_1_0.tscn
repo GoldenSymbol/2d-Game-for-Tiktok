@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://crokna8j8lagw"]
+[gd_scene load_steps=32 format=3 uid="uid://crokna8j8lagw"]
 
 [ext_resource type="Script" path="res://scripts/enemy_one.gd" id="1_5241r"]
 [ext_resource type="Texture2D" uid="uid://4th451k6vdm2" path="res://assets/mobs/patrick/01-Idle/Idle 01.png" id="2_4rh68"]
+[ext_resource type="PackedScene" uid="uid://biyw64u8aedld" path="res://scenes/health_bar.tscn" id="2_xn4cr"]
 [ext_resource type="Texture2D" uid="uid://bymjoa5aa8vu0" path="res://assets/mobs/patrick/01-Idle/Idle 02.png" id="3_328tt"]
 [ext_resource type="Texture2D" uid="uid://41j6sos0t5dt" path="res://assets/mobs/patrick/01-Idle/Idle 03.png" id="4_w2hbd"]
 [ext_resource type="Texture2D" uid="uid://ov5i1s1t8qv0" path="res://assets/mobs/patrick/01-Idle/Idle 04.png" id="5_ccqni"]
@@ -25,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://damfq0jsnueqb" path="res://assets/mobs/patrick/09-Dead Hit/Dead Hit 04.png" id="23_2ihre"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_457b7"]
-radius = 10.6733
+radius = 10.2581
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t24kn"]
 radius = 52.0
@@ -45,6 +46,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("20_tskrg"), ExtResource("21_1bwc7"), ExtResource("22_jnsq6"), ExtResource("23_2ihre")]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_me7my"]
 resource_name = "hit"
@@ -61,6 +76,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("16_mnkwh"), ExtResource("17_ebldy"), ExtResource("18_7313o"), ExtResource("19_naprg")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"get_hit"
+}, {
+"args": [],
+"method": &"get_hit"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ssgbg"]
@@ -106,12 +138,17 @@ _data = {
 }
 
 [node name="enemy1_0" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_5241r")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_xn4cr")]
+offset_top = -53.0
+offset_bottom = -53.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3.58333, 3.58333)
-texture = ExtResource("15_j4cwg")
+texture = ExtResource("16_mnkwh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5.96046e-08)
@@ -131,3 +168,5 @@ libraries = {
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-52, 0)
 target_position = Vector2(0, 66)
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
